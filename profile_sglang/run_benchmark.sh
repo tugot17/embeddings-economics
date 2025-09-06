@@ -1,0 +1,1 @@
+uv run embedding_benchmark.py --model Qwen/Qwen3-Embedding-8B --sequence_lengths "2000" --batch_sizes "1,8,16,32,64,128" --num_runs 3 --description "Qwen3 8B Embedding TP1 H100" --results_file h100_flashinfer_backend.json
