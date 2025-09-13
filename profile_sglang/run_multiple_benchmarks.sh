@@ -2,12 +2,12 @@
 
 # Configuration
 MODEL="Qwen/Qwen3-Embedding-8B"
-NUM_RUNS=3
+NUM_RUNS=10
 HARDWARE="H100"  # Change this to "4090" or "Mi300x" for different hardware
-RESULTS_DIR="embedding_results"  # Directory to store results
+RESULTS_DIR="h100_embedding_results"  # Directory to store results
 
 # Sequence lengths to test
-SEQUENCE_LENGTHS=(100 200 400 800 1000 2000 4000 8000)
+SEQUENCE_LENGTHS=(100 200 400 800 1000 2000 4000)
 
 # Batch sizes to test (powers of 2 from 1 to 256)
 BATCH_SIZES=(1 2 4 8 16 32 64 128 256)
