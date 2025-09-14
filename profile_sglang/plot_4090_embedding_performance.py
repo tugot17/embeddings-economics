@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Plot H100 embedding performance across different sequence lengths and batch sizes
+Plot 4090 embedding performance across different sequence lengths and batch sizes
 """
 
 import json
@@ -14,7 +14,7 @@ def load_embedding_data(results_dir):
     data = {}
     
     # Get all JSON files in the directory
-    json_files = list(Path(results_dir).glob("embedding_results_*_h100.json"))
+    json_files = list(Path(results_dir).glob("embedding_results_*_4090.json"))
     
     for file_path in sorted(json_files):
         with open(file_path, 'r') as f:
@@ -63,7 +63,7 @@ def plot_embedding_performance(data):
     """Create performance plot similar to the reference image"""
     
     # Description from the JSON metadata
-    description = "H100 TP1 Qwen3-8B Embedding Performance"
+    description = "RTX 4090 TP1 Qwen3-8B Embedding Performance"
     
     plt.figure(figsize=(12, 8))
     
@@ -119,7 +119,7 @@ def plot_embedding_performance(data):
 def main():
     # Directory containing the embedding results (relative to script location)
     script_dir = Path(__file__).parent
-    results_dir = script_dir / "h100_embedding_results"
+    results_dir = script_dir / "4090_embedding_results_v2"
     
     # Load data
     print("Loading embedding performance data...")
@@ -129,7 +129,7 @@ def main():
     
     if not data:
         print(f"No embedding data found in {results_dir}")
-        print("Make sure the directory exists and contains embedding_results_*_h100.json files")
+        print("Make sure the directory exists and contains embedding_results_*_4090.json files")
         return
     
     # Create plot
@@ -137,7 +137,7 @@ def main():
     plt = plot_embedding_performance(data)
     
     # Save plot (relative to script location)
-    output_path = script_dir / "h100_embedding_performance.png"
+    output_path = script_dir / "4090_embedding_performance.png"
     plt.savefig(output_path, dpi=300, bbox_inches='tight')
     print(f"Plot saved to: {output_path}")
     
